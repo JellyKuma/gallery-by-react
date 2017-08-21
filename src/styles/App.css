@@ -3,7 +3,10 @@ body {
   color: #fff;
   background: #222;
 }
-
+html,body, .app, .stage, .imgSec {
+  height:100%;
+  width:100%;
+}
 .index img {
   margin: 40px auto;
   border-radius: 4px;
@@ -18,4 +21,20 @@ body {
   border: 1px solid #000;
   border-width: 1px 0;
   background: #666;
+}
+
+
+.stage {
+  position:relative;
+  background-color: #c0c0c0;
+}
+.imgSec {
+  overflow: hidden;
+}
+.imgCtr {
+  position: absolute;
+  bottom:30px;
+  left:0;
+  width:100%;
+  text-align: center;
 }
