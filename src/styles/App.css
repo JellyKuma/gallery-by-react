@@ -26,10 +26,12 @@ html,body, .app, .stage, .imgSec {
 
 .stage {
   position:relative;
-  background-color: #c0c0c0;
+  /*height:700px;*/
+  background-color: #dddddd;
 }
 .imgSec {
   overflow: hidden;
+  position:relative;
 }
 .imgCtr {
   position: absolute;
@@ -37,4 +39,23 @@ html,body, .app, .stage, .imgSec {
   left:0;
   width:100%;
   text-align: center;
+}
+.imgFig {
+  position: absolute;
+  width: 320px;
+  height: 360px;
+  margin: 0;
+  padding: 40px;
+  background-color: #fff;
+  box-sizing: border-box;
+}
+.imgFig img {
+  width:240px;
+}
+.imgFig figcaption {
+  text-align:center;
+}
+.imgFig figcaption h2 {
+  line-height: 1.5em;
+  color:gray;
 }
