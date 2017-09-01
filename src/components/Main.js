@@ -1,16 +1,17 @@
 require('normalize.css/normalize.css');
 require('styles/App.css');
+// require('styles/fonts/iconfont.css');
 
 import React from 'react';
 import ReactDOM from 'react-dom';
 
 // 获取图片数据
-var imgDatas = require("json!../data/imgData.json");
+var imgDatas = require('json!../data/imgData.json');
 // 自执行函数，遍历图片
 imgDatas = (function genImgUrl(imgDatasArr) {
   for (var i = 0; i < imgDatasArr.length; i++) {
     var singleImgData = imgDatasArr[i];
-    singleImgData.imgUrl = require("../images/" + singleImgData.fileName);
+    singleImgData.imgUrl = require('../images/' + singleImgData.fileName);
     imgDatasArr[i] = singleImgData;
   }
   return imgDatasArr;
@@ -34,24 +35,24 @@ class ImgFigure extends React.Component {
     }
     // 如果图片的旋转角度不为0，添加角度
     if (this.props.arrange.rotate) {
-      (["-moz-", "-ms", "-webkit", ""]).forEach(function (i) {
-        styleObj[i + "transform"] = "rotate(" + this.props.arrange.rotate + "deg)";
+      (['MozTransform', 'msTransform', 'WebkitTransform', 'transform']).forEach(function (i) {
+        styleObj[i] = 'rotate(' + this.props.arrange.rotate + 'deg)';
       }.bind(this));
     }
     if(this.props.arrange.isCenter === true){
       styleObj.zIndex = 11;
-      styleObj.boxShadow = 'box-shadow: 0 0 20px rgba(0, 0, 0, 0.3)';
+      styleObj.boxShadow = '0 0 30px rgba(0, 0, 0, 0.2)';
     }
     // 定义图片卡css类名
-    var imgFigCssName = "imgFig";
-    imgFigCssName += this.props.arrange.isInverse ? " isInverse" : "";
+    var imgFigCssName = 'imgFig';
+    imgFigCssName += this.props.arrange.isInverse ? ' isInverse' : '';
 
     return (
       <figure className={imgFigCssName} style={styleObj} onClick={this.handleClick}>
         <img src={this.props.data.imgUrl} alt={this.props.data.title}/>
         <figcaption>
-          <h2 className="imgTit">{this.props.data.title}</h2>
-          <div className="imgBack" onClick={this.handleClick}>
+          <h2 className='imgTit'>{this.props.data.title}</h2>
+          <div className='imgBack' onClick={this.handleClick}>
             <p>
               {this.props.data.desc}
             </p>
@@ -75,6 +76,30 @@ function getRangeRandom(low, high) {
 function get30DegRandom() {
   return ((Math.random() > 0.5 ? '+' : '-') + Math.ceil(Math.random() * 30));
 }
+
+// 控制器类
+class ControllerUnit extends React.Component {
+  handleClick = function(e){
+    if (this.props.arrange.isCenter) {
+      this.props.inverse();
+    } else {
+      this.props.center();
+    }
+    e.preventDefault();
+    e.stopPropagation();
+  }.bind(this);
+  render(){
+    var controllerUnitClassName = 'controllerUnit';
+    if(this.props.arrange.isCenter){
+      controllerUnitClassName += ' isCenter';
+    }
+    return (
+      <span className={controllerUnitClassName} onClick={this.handleClick}></span>
+    );
+  }
+}
+
+// 主场景类
 class AppComponent extends React.Component {
   Constant = {
     centerPos: {//中心点
@@ -249,16 +274,10 @@ class AppComponent extends React.Component {
           isCenter: false
         }
       }
-      imgFigures.push(<ImgFigure data={val} ref={"imgFig" + index} arrange={this.state.imgArrangeArr[index]}
-                                 inverse={this.inverse(index)} center={this.center(index)}/>)
+      imgFigures.push(<ImgFigure data={val} key={index} ref={'imgFig' + index} arrange={this.state.imgArrangeArr[index]} inverse={this.inverse(index)} center={this.center(index)}/>);
+      crtUnits.push(<ControllerUnit key={index} arrange={this.state.imgArrangeArr[index]} inverse={this.inverse(index)} center={this.center(index)}/>);
     }.bind(this));
     return (
-      // *<div className="index">*/
-      //   /*<img src={yeomanImage} alt="Yeoman Generator" />*/
-      //   /*<div className="notice">Please edit <code>src/components/Main.js</code> to get started!</div>*/
-      // /*</div>*
-
-
       <div className="stage" ref="stage">
         <section className="imgSec">
           {imgFigures}
