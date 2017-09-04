@@ -1,7 +1,7 @@
 require('normalize.css/normalize.css');
-require('styles/App.css');
-// require('styles/fonts/iconfont.css');
-
+//require('styles/App.css');
+require('styles/fonts/iconfont.css');
+require('styles/app.less');
 import React from 'react';
 import ReactDOM from 'react-dom';
 
@@ -91,7 +91,10 @@ class ControllerUnit extends React.Component {
   render(){
     var controllerUnitClassName = 'controllerUnit';
     if(this.props.arrange.isCenter){
-      controllerUnitClassName += ' isCenter';
+      controllerUnitClassName += ' isCenter iconfont icon-image';
+      if(this.props.arrange.isInverse){
+        controllerUnitClassName += ' isInverse';
+      }
     }
     return (
       <span className={controllerUnitClassName} onClick={this.handleClick}></span>
