@@ -62,7 +62,10 @@ function getDefaultModules() {
 
 module.exports = {
   srcPath: srcPath,
-  publicPath: '/assets/',
+  //发布时设置为这个公共路径
+  publicPath: 'assets/',
+  //开发时设置为这个公共路径
+  // publicPath: '/assets/',
   port: dfltPort,
   getDefaultModules: getDefaultModules
 };
