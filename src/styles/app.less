@@ -18,8 +18,8 @@ html,body, .app, .stage, .imgSec {
   perspective: 1800px;
   .imgFig{
     position: absolute;
-    width: 320px;
-    height: 360px;
+    width: 580px;
+    height: 460px;
     margin: 0;
     padding: 40px;
     background-color: #fff;
@@ -40,7 +40,7 @@ html,body, .app, .stage, .imgSec {
       }
     }
     img {
-      width:240px;
+      width:500px;
     }
     figcaption {
       text-align:center;
@@ -63,6 +63,10 @@ html,body, .app, .stage, .imgSec {
         -ms-backface-visibility: hidden;
         backface-visibility: hidden;
         transform: rotateY(180deg) translateZ(1px);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
         p{
           color:gray;
           text-align: left;

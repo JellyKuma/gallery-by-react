@@ -244,7 +244,7 @@ class AppComponent extends React.Component {
     //计算中心图片的位置坐标
     this.Constant.centerPos = {
       left: halfStgW - halfImgW,
-      top: halfStgH - halfImgH
+      top: halfStgH - halfImgH - 80
     }
     // 计算左右两侧区域的取值范围
     this.Constant.hPosRange.leftSecX[0] = -halfImgW;
