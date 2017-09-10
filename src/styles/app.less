@@ -18,8 +18,8 @@ html,body, .app, .stage, .imgSec {
   perspective: 1800px;
   .imgFig{
     position: absolute;
-    width: 580px;
-    height: 460px;
+    width: 460px;
+    height: 390px;
     margin: 0;
     padding: 40px;
     background-color: #fff;
@@ -36,11 +36,15 @@ html,body, .app, .stage, .imgSec {
     &.isInverse{
       transform: translateX(100%) rotateY(180deg);
       .imgBack{
-        transform: rotateY(-180deg)
+        //transform: rotateY(-180deg)
+        -webkit-backface-visibility: visible;
+        -moz-backface-visibility: visible;
+        -ms-backface-visibility: visible;
+        backface-visibility: visible;
       }
     }
     img {
-      width:500px;
+      width:380px;
     }
     figcaption {
       text-align:center;
@@ -70,6 +74,7 @@ html,body, .app, .stage, .imgSec {
         p{
           color:gray;
           text-align: left;
+          width:100%;
         }
       }
     }

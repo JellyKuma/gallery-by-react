@@ -23,8 +23,8 @@ body,
 }
 .imgSec .imgFig {
   position: absolute;
-  width: 580px;
-  height: 460px;
+  width: 460px;
+  height: 390px;
   margin: 0;
   padding: 40px;
   background-color: #fff;
@@ -43,10 +43,13 @@ body,
   transform: translateX(100%) rotateY(180deg);
 }
 .imgSec .imgFig.isInverse .imgBack {
-  transform: rotateY(-180deg);
+  -webkit-backface-visibility: visible;
+  -moz-backface-visibility: visible;
+  -ms-backface-visibility: visible;
+  backface-visibility: visible;
 }
 .imgSec .imgFig img {
-  width: 500px;
+  width: 380px;
 }
 .imgSec .imgFig figcaption {
   text-align: center;
@@ -78,6 +81,7 @@ body,
 .imgSec .imgFig figcaption .imgBack p {
   color: gray;
   text-align: left;
+  width: 100%;
 }
 .imgCtr {
   position: absolute;
